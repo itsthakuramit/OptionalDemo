@@ -10,22 +10,28 @@ import com.stackroute.optionaldemos.service.EmployeeService;
  * Hello world!
  *
  */
-public class MainApp {
+public class MainApp4 {
 	
 	
     public static void main( String[] args ) throws Exception{
 
     	String text = "Welcome";
     	
-    	System.out.println(Optional.ofNullable(text).isEmpty());
-    	System.out.println(Optional.of(text).isPresent());
+    	String defaultText = Optional.ofNullable(text)
+    			.orElseThrow(NullPointerException::new);
+    	
     
-    	text = null;
+    	String temp = Optional.ofNullable(text).get();
+    	
+    	System.out.println(temp);
     	
     	System.out.println(Optional.ofNullable(text).isEmpty());
-    	System.out.println(Optional.of(text).isEmpty());
-    	System.out.println(Optional.of(text).isPresent());
+    
+	    
+    	Optional<String> de = Optional.of(text);
     	
+    	System.out.println(de.isPresent());	
+    	System.out.println(de.get());
     
     	
     }
